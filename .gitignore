@@ -1,0 +1,4 @@
+.vagrant/
+keys/id_rsa
+keys/id_rsa.pub
+*.log

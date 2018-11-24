@@ -1,0 +1,13 @@
+# https://www.digitalocean.com/community/tutorials/how-to-automate-installing-wordpress-on-ubuntu-14-04-using-ansible
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install htop
+      apt:
+        pkg: htop
+        state: present
+    - name: install tree
+      apt:
+        pkg: tree
+        state: present

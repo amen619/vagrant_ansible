@@ -1,5 +1,5 @@
 ---
-# tasks file for loadbalancer
+# tasks file for nginx
 - name: install nginx
   apt: name=nginx state=present update_cache=yes
 

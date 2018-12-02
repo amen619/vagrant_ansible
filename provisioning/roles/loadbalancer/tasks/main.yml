@@ -1,0 +1,11 @@
+---
+# tasks file for loadbalancer
+- name: install nginx
+  apt: name=nginx state=present update_cache=yes
+
+- name: start nginx
+  service: name=nginx state=started enabled=yes
+
+- name: copy custom web
+  copy: src=files/index.html dest=/usr/share/nginx/html mode=755
+  notify: restart nginx

@@ -3,11 +3,12 @@
 - hosts: all
   become: true
   tasks:
-    - name: install htop
-      apt:
-        pkg: htop
-        state: present
-    - name: install tree
-      apt:
-        pkg: tree
-        state: present
+    - name: install tools
+      apt: 
+        name: "{{ packages }}"
+        state: present 
+        update_cache: yes
+      vars:
+        packages:
+          - htop
+          - tree       

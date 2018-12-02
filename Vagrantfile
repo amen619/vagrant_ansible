@@ -64,6 +64,9 @@ Vagrant.configure("2") do |config|
                 vb.linked_clone = true
                 vb.cpus = node["cpus"]
                 vb.memory = memory
+                # vagrant 2.2.1 issue. Windows hosts winrm was not working
+                # https://github.com/hashicorp/vagrant/issues/10429
+                vb.default_nic_type = nil
                 node["extra_disks"].each_with_index do |disk_size, disk_index|
                     disk_file = "vagrant/disks/%s_%d.vdi" % [node["hostname"], disk_index]
                     if not File.exist?(disk_file)

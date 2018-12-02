@@ -2,7 +2,9 @@
 
 Creates a local Vagrant environment to develop Ansible on your own local machine.
 
-## Requirements
+## Vagrantfile compatibility versions
+- vagrant: 2.2.1
+- virtualbox: 5.2.18
 
 ### Plugins
 

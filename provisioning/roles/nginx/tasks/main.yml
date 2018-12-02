@@ -6,6 +6,9 @@
 - name: start nginx
   service: name=nginx state=started enabled=yes
 
+- name: delete default index page
+  file: path=/var/www/html/index.nginx-debian.html state=absent
+
 - name: copy custom web
-  copy: src=files/index.html dest=/usr/share/nginx/html mode=755
+  copy: src=index.html dest=/var/www/html mode=644
   notify: restart nginx

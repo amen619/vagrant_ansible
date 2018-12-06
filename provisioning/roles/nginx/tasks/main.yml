@@ -10,5 +10,5 @@
   file: path=/var/www/html/index.nginx-debian.html state=absent
 
 - name: copy custom web
-  copy: src=index.html dest=/var/www/html mode=644
+  template: src=index.html.j2 dest=/var/www/html/index.html mode=644
   notify: restart nginx

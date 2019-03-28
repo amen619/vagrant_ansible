@@ -12,3 +12,7 @@
 - name: copy custom web
   template: src=index.html.j2 dest=/var/www/html/index.html mode=644
   notify: restart nginx
+
+- debug: var=hostvars['loadbalancer']["ansible_enp0s8"]["ipv4"]["address"]
+- debug: var=hostvars['loadbalancer']["ansible_facts"]["os_family"]
+- debug: var=hostvars['loadbalancer']["ansible_facts"]["nodename"]

@@ -77,11 +77,27 @@ Vagrant.configure("2") do |config|
                     end
                 end
             end
-            nodeconfig.vm.provision "ansible_local" do |ansible|
-                ansible.playbook = "provisioning/playbook.yml"
+            # configuracion especifica de windows
+            if node["box"].downcase.include? "windows"
+                nodeconfig.vm.guest = :windows
+                nodeconfig.vm.communicator = "winrm"
+                nodeconfig.vm.boot_timeout = 600
+                nodeconfig.vm.graceful_halt_timeout = 600
+                nodeconfig.winrm.transport = :plaintext
+                nodeconfig.winrm.username = node["user"]
+                nodeconfig.winrm.password = node["password"]
             end
-            nodeconfig.vm.provision "file", source: "keys/id_rsa.pub", destination: "/tmp/id_rsa.pub"          
-            nodeconfig.vm.provision "shell", privileged: true, inline: "cat /tmp/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys"
+            # solo en maquinas linux configuramos los grains en un fichero
+            if node["box"].downcase.include? "windows"
+                nodeconfig.vm.provision "shell", inline: "New-Item -Path 'C:/' -Name 'testfile1.txt' -ItemType 'file' -Value 'This is a text string.'"
+            else
+                nodeconfig.vm.provision "ansible_local" do |ansible|
+                    ansible.playbook = "provisioning/playbook.yml"
+                end
+                nodeconfig.vm.provision "file", source: "keys/id_rsa.pub", destination: "/tmp/id_rsa.pub"          
+                nodeconfig.vm.provision "shell", privileged: true, inline: "cat /tmp/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys"
+            end
+            
         end
     end
 

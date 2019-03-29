@@ -1,5 +1,0 @@
-[loadbalancer]
-loadbalancer
-
-[master]
-ansible-master ansible_connection=local

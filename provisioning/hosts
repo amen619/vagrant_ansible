@@ -1,0 +1,11 @@
+[master]
+ansible-master ansible_connection=local
+
+[linux:children]
+nginx
+
+[nginx]
+nginx
+
+[linux:vars]
+ansible_become=true

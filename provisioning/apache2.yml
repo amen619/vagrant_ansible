@@ -1,0 +1,5 @@
+---
+- hosts: apache2
+  become: true
+  roles: 
+    - apache2

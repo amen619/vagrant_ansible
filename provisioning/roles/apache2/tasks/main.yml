@@ -1,0 +1,12 @@
+---
+# tasks file for apache2
+
+- name: install apache2
+  apt: name=apache2 state=present update_cache=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install httpd
+  yum: name=httpd state=present update_cache=yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- debug: var=hostvars['apache2']['ansible_facts']['os_family']

@@ -3,9 +3,7 @@ ansible-master ansible_connection=local
 
 [linux:children]
 nginx
-
-[nginx]
-nginx
+apache2
 
 [linux:vars]
 ansible_become=true

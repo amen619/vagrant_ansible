@@ -9,4 +9,9 @@
   yum: name=httpd state=present update_cache=yes
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
+- name: copy custom web
+  template: src=index.html.j2 dest=/var/www/html/index.html mode=644
+  notify: restart apache2
+
 - debug: var=hostvars['apache2']['ansible_facts']['os_family']
+- debug: var=hostvars['docker']['ansible_enp0s8']['ipv4']['address']

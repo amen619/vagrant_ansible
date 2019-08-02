@@ -2,3 +2,6 @@
 # vars file for apache2
 myip: "{{ ansible_enp0s8.ipv4.address }}"
 dockerip: "{{ hostvars['docker']['ansible_enp0s8']['ipv4']['address'] }}"
+folders: 
+  - temp1
+  - temp2

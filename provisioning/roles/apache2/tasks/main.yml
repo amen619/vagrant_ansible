@@ -13,5 +13,12 @@
   template: src=index.html.j2 dest=/var/www/html/index.html mode=644
   notify: restart apache2
 
+- name: Create a directory if it does not exist
+  file:
+    path: "/tmp/{{ item }}"
+    state: directory
+    mode: '0755'
+  with_items: "{{ folders }}"
+
 - debug: var=hostvars['apache2']['ansible_facts']['os_family']
 - debug: var=hostvars['docker']['ansible_enp0s8']['ipv4']['address']

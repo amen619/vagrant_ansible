@@ -61,3 +61,5 @@ ok: [loadbalancer] => {
 
 - [Using Variables - facts-caching](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#fact-caching)
 - [Multi-Machine Vagrant Ansible Gotcha](https://blog.wjlr.org.uk/2014/12/30/multi-machine-vagrant-ansible-gotcha.html)
+- [how to access host variable of a different host with Ansible?](https://serverfault.com/questions/638507/how-to-access-host-variable-of-a-different-host-with-ansible)
+- [Jinja Undefined values](https://docs.ansible.com/ansible/latest/porting_guides/porting_guide_2.8.html)

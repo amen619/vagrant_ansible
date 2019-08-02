@@ -6,3 +6,5 @@
 {% for host in groups['linux']|sort %}
    <p>{{ hostvars[host]['ansible_hostname'] }} : {{ hostvars[host]['ansible_enp0s8']['ipv4']['address'] }}</p>
 {% endfor %}
+
+<h3>test jinja default value -> apache ip: {{ apacheip | default('defaultip') }}</h3>

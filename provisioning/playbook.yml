@@ -10,4 +10,4 @@
       vars:
         packages:
           - htop
-          - tree       
+          - tree
